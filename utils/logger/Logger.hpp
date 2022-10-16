@@ -6,8 +6,13 @@
 #include <string>
 #include <mutex>
 
+#include <concepts>
+
 namespace logger
 {
+
+template <typename T> 
+concept IStringConvertible = requires(T t) { std::to_string(t); };
 
 enum class LogLevel
 {
@@ -52,9 +57,7 @@ public:
         LoggerExecutor::instance().execute(Level, _category, _message);
     }
 
-    template <
-        typename T
-    >
+    template <IStringConvertible T>
     Logger& operator<<(T const& message)
     {
         message += " " + std::to_string(message);

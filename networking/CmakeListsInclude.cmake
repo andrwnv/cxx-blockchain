@@ -4,7 +4,14 @@ set(WORKING_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
 include_directories("${CMAKE_CURRENT_LIST_DIR}")
 
 set(HEADERS_ONLY
-    IConnection
+    "IConnection"
+    "TcpConnection"
+    "Session"
+    "Request"
+    "Response"
+    "Content"
+    "types/StatusCode"
+    "types/Method"
 )
 
 set(SOURCES_ONLY)

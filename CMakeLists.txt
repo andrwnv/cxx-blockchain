@@ -33,6 +33,9 @@ source_group("Source Files" FILES ${SOURCES})
 
 find_package(Threads REQUIRED)
 add_subdirectory(utils/logger)
+find_package(Boost COMPONENTS system filesystem REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+link_directories(${Boost_LIBRARY_DIR})
 
 include_directories(utils)
 
@@ -61,6 +64,7 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
         logger
         Threads::Threads
+        ${Boost_LIBRARIES}
 )
 
 # create package
